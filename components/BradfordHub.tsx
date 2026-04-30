@@ -6,18 +6,9 @@ import Breadcrumbs from './Breadcrumbs';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
-const BradfordHub: React.FC = () => {
-  React.useEffect(() => {
-    document.title = "Automatic Driving Lessons Bradford | All Service Areas & Postcodes";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Find automatic driving lessons in your Bradford area. We cover all BD postcodes including Shipley, Bingley, Keighley, and more. Choose your local area to start.');
-  }, []);
+import SEO from './SEO';
 
+const BradfordHub: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const bradfordAreas = ALL_LOCATIONS
@@ -46,6 +37,11 @@ const BradfordHub: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn min-h-screen location-page">
+      <SEO 
+        title="Automatic Driving Lessons Bradford | All Service Areas & Postcodes"
+        description="Find automatic driving lessons in your Bradford area. We cover all BD postcodes including Shipley, Bingley, Keighley, and more. Choose your local area to start."
+        canonical="https://fastautopass.co.uk/bradford"
+      />
       <Schema type="LocalBusiness" data={{
         ...getLocalBusinessSchema(),
         "name": "FastAutoPass Bradford",

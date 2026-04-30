@@ -7,19 +7,14 @@ import ReviewsSlider from './ReviewsSlider';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const CareersPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   useEffect(() => {
-    document.title = "Join Our Team – Driving Instructor Careers in Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Build a rewarding driving instructor career with FastAutoPass in Bradford and Leeds. We offer a supportive local team, steady work, and a calm professional environment for ADIs and PDIs.');
+    // window.scrollTo removed if needed
   }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
@@ -103,6 +98,11 @@ const CareersPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans careers-page">
+      <SEO 
+        title="Join Our Team – Driving Instructor Careers in Bradford & Leeds | FastAutoPass"
+        description="Build a rewarding driving instructor career with FastAutoPass in Bradford and Leeds. We offer a supportive local team, steady work, and a calm professional environment for ADIs and PDIs."
+        canonical="https://fastautopass.co.uk/careers"
+      />
       <Schema 
         type="LocalBusiness" 
         data={getLocalBusinessSchema()} 

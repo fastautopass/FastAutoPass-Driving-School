@@ -13,19 +13,15 @@ import {
   ChevronDown
 } from 'lucide-react';
 
+import SEO from './SEO';
+
 const NervousDriverLessonsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   useEffect(() => {
-    document.title = "Nervous Driver Lessons Bradford & Leeds | Patient Instructors | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Calm, patient, and supportive automatic driving lessons for nervous learners in Bradford and Leeds. Build confidence at your own pace with our supportive instructors.');
+    // window.scrollTo removed from SEO to avoid duplication if needed, 
+    // but here it's fine to keep or remove. The manager said only smallest change.
   }, []);
 
   const renderMarkdownLinks = (text: string) => {
@@ -137,6 +133,11 @@ const NervousDriverLessonsPage: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen font-sans text-gray-900 selection:bg-red-600 selection:text-white nervous-drivers-page">
+      <SEO 
+        title="Nervous Driver Lessons Bradford & Leeds | Patient Instructors | FastAutoPass"
+        description="Calm, patient, and supportive automatic driving lessons for nervous learners in Bradford and Leeds. Build confidence at your own pace with our supportive instructors."
+        canonical="https://fastautopass.co.uk/nervous-driver-lessons"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

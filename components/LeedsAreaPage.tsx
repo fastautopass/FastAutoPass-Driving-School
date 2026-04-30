@@ -15,6 +15,8 @@ import MockTestChecklist from './MockTestChecklist';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   const isInternal = href?.startsWith('/');
   // Default classes for area page links
@@ -38,14 +40,7 @@ interface LeedsAreaPageProps {
 
 const LeedsAreaPage: React.FC<LeedsAreaPageProps> = ({ area }) => {
   React.useEffect(() => {
-    document.title = `Automatic Driving Lessons in ${area.name} | Leeds ${area.postcode}`;
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', `Learn to drive in ${area.name} with local Leeds automatic specialists. patient instruction, expert test route practice, and modern dual-controlled cars.`);
+    // metadata handled by SEO component
   }, [area]);
 
   const nearbyAreas = area.nearbyIds 
@@ -57,6 +52,11 @@ const LeedsAreaPage: React.FC<LeedsAreaPageProps> = ({ area }) => {
 
   return (
     <div className="animate-fadeIn font-inter text-gray-800 bg-white location-page">
+      <SEO 
+        title={`Automatic Driving Lessons in ${area.name} | Leeds ${area.postcode}`}
+        description={`Learn to drive in ${area.name} with local Leeds automatic specialists. patient instruction, expert test route practice, and modern dual-controlled cars.`}
+        canonical={`https://fastautopass.co.uk/${area.city}/${area.id}`}
+      />
       <Schema type="LocalBusiness" data={{
         ...getLocalBusinessSchema(),
         "name": `FastAutoPass ${area.name}`,

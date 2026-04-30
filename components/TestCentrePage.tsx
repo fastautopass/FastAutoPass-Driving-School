@@ -8,6 +8,8 @@ import TrustBadges from './TrustBadges';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   const isInternal = href?.startsWith('/');
   const classes = "text-red-600 font-black hover:underline transition-all";
@@ -52,13 +54,7 @@ const TestCentrePage: React.FC = () => {
   const centre = TEST_CENTRES.find(c => c.id === centreId);
 
   React.useEffect(() => {
-    if (centre) {
-      document.title = centre.metaTitle;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', centre.metaDescription);
-      }
-    }
+    // metadata handled by SEO component
   }, [centre]);
 
   if (!centre) {
@@ -67,6 +63,11 @@ const TestCentrePage: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen animate-fadeIn test-centre-page">
+      <SEO 
+        title={centre.metaTitle}
+        description={centre.metaDescription}
+        canonical={`https://fastautopass.co.uk/driving-test-centres/${centre.id}`}
+      />
       <Schema 
         type="BreadcrumbList" 
         data={getBreadcrumbSchema([

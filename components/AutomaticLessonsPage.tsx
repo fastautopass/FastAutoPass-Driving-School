@@ -8,6 +8,8 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const AutomaticLessonsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
@@ -61,17 +63,6 @@ const AutomaticLessonsPage: React.FC = () => {
 
     return parts.length > 0 ? parts : text;
   };
-
-  React.useEffect(() => {
-    document.title = "Automatic Driving Lessons Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Expert automatic driving lessons in Bradford and Leeds with DVSA approved instructors. High first-time pass rates, modern dual-controlled cars, and local test route expertise.');
-  }, []);
 
   const faqs = [
     {
@@ -134,6 +125,11 @@ const AutomaticLessonsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans automatic-lessons-page">
+      <SEO 
+        title="Automatic Driving Lessons Bradford & Leeds | FastAutoPass"
+        description="Expert automatic driving lessons in Bradford and Leeds with DVSA approved instructors. High first-time pass rates, modern dual-controlled cars, and local test route expertise."
+        canonical="https://fastautopass.co.uk/automatic-driving-lessons"
+      />
       <Schema type="LocalBusiness" data={getLocalBusinessSchema()} />
       <Schema 
         type="Service" 

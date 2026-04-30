@@ -9,6 +9,8 @@ import { ALL_LOCATIONS, CONTACT_INFO } from '../constants';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   const isInternal = href?.startsWith('/');
   if (isInternal) {
@@ -49,14 +51,7 @@ const FAQItem: React.FC<{ faq: { question: string; answer: string }; idx: number
 
 const RecentPassesPage: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Recent Driving Test Passes in Bradford & Leeds | Student Success";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'See our latest driving test success stories across Bradford and Leeds areas. Real student results from West Yorkshire\'s automatic driving specialists.');
+    // window.scrollTo(0, 0); // optional
   }, []);
 
   const bradfordAreas = ALL_LOCATIONS.filter(l => l.city === 'bradford').slice(0, 12);
@@ -123,6 +118,11 @@ const RecentPassesPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn recent-passes-page">
+      <SEO 
+        title="Recent Driving Test Passes in Bradford & Leeds | Student Success"
+        description="See our latest driving test success stories across Bradford and Leeds areas. Real student results from West Yorkshire's automatic driving specialists."
+        canonical="https://fastautopass.co.uk/recent-passes"
+      />
       <Schema 
         type="LocalBusiness" 
         data={getLocalBusinessSchema()} 

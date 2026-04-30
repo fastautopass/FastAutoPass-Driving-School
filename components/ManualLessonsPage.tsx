@@ -8,20 +8,11 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema, getLocalBusinessSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const ManualLessonsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
-
-  React.useEffect(() => {
-    document.title = "Manual Driving Lessons Bradford & Leeds | FastAutoPass Driving School";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Professional manual driving lessons in Bradford and Leeds. Master clutch control and gear changes with our DVSA approved instructors. Full license flexibility and local test route expertise.');
-  }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
     {
@@ -100,6 +91,11 @@ const ManualLessonsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans manual-lessons-page">
+      <SEO 
+        title="Manual Driving Lessons Bradford & Leeds | FastAutoPass Driving School"
+        description="Professional manual driving lessons in Bradford and Leeds. Master clutch control and gear changes with our DVSA approved instructors. Full license flexibility and local test route expertise."
+        canonical="https://fastautopass.co.uk/manual-driving-lessons"
+      />
       <Schema type="LocalBusiness" data={getLocalBusinessSchema()} />
       <Schema 
         type="Service" 

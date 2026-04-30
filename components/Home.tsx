@@ -24,19 +24,10 @@ const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   return <a href={href} className={classes} target="_blank" rel="noopener noreferrer">{children}</a>;
 };
 
+import SEO from './SEO';
+
 const Home: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  useEffect(() => {
-    document.title = "Driving School Bradford & Leeds | Automatic Driving Lessons | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Learn with a top-rated automatic driving school in Bradford and Leeds. 95% first-time pass rate, patient instructors, and local test route expertise.');
-  }, []);
 
   const services = [
     {
@@ -152,6 +143,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans text-gray-900 leading-normal">
+      <SEO 
+        title="Driving School Bradford & Leeds | Automatic Driving Lessons | FastAutoPass"
+        description="Learn with a top-rated automatic driving school in Bradford and Leeds. 95% first-time pass rate, patient instructors, and local test route expertise."
+        canonical="https://fastautopass.co.uk/"
+      />
       <Schema type="LocalBusiness" data={getLocalBusinessSchema()} />
       <Schema type="Organization" data={getOrganizationSchema()} />
       <Schema type="WebSite" data={getWebSiteSchema()} />

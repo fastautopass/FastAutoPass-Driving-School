@@ -8,20 +8,11 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const PassPlusPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
-
-  useEffect(() => {
-    document.title = "Pass Plus Course Bradford & Leeds | Insurance Savings | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Bridge the gap between passing your test and real-world driving. Our Pass Plus course in Bradford and Leeds builds safety, maturity, and helps reduce insurance costs.');
-  }, []);
 
   const renderMarkdownLinks = (text: string) => {
     const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -133,6 +124,11 @@ const PassPlusPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans pass-plus-page">
+      <SEO 
+        title="Pass Plus Course Bradford & Leeds | Insurance Savings | FastAutoPass"
+        description="Bridge the gap between passing your test and real-world driving. Our Pass Plus course in Bradford and Leeds builds safety, maturity, and helps reduce insurance costs."
+        canonical="https://fastautopass.co.uk/pass-plus"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

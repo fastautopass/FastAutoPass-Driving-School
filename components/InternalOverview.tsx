@@ -7,16 +7,11 @@ import { TEST_CENTRES } from '../testCentresData';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const InternalOverview: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Site Content Overview | FastAutoPass Driving School";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', "Internal overview of all FastAutoPass website pages, including core services, driving test centres, and local service areas across Bradford and Leeds.");
+    // metadata handled by SEO component
   }, []);
 
   const lastReviewed = new Date().toLocaleDateString('en-GB', {
@@ -57,6 +52,11 @@ const InternalOverview: React.FC = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen py-12 legal-page">
+      <SEO 
+        title="Site Content Overview | FastAutoPass Driving School"
+        description="Internal overview of all FastAutoPass website pages, including core services, driving test centres, and local service areas across Bradford and Leeds."
+        canonical="https://fastautopass.co.uk/internal-overview"
+      />
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
         { name: "Site Overview", item: "https://fastautopass.co.uk/internal-overview" }

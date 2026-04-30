@@ -155,9 +155,26 @@ async function startServer() {
         const { render } = await vite.ssrLoadModule('/entry-server.tsx');
 
         // wait for render to complete (may be async if we used suspense)
-        const { html } = render(url);
+        const { html, seoData } = render(url);
 
-        const appHtml = template.replace(`<!--app-html-->`, html);
+        let appHtml = template.replace(`<!--app-html-->`, html);
+        
+        // Inject SEO metadata
+        if (seoData.title) {
+          appHtml = appHtml.replace(/<title>[\s\S]*?<\/title>/i, `<title>${seoData.title}</title>`);
+        }
+        
+        let headInjections = '';
+        if (seoData.description) {
+          headInjections += `    <meta name="description" content="${seoData.description}">\n`;
+        }
+        if (seoData.canonical) {
+          headInjections += `    <link rel="canonical" href="${seoData.canonical}">\n`;
+        }
+        
+        if (headInjections) {
+          appHtml = appHtml.replace('</head>', `${headInjections}</head>`);
+        }
 
         res.status(200).set({ 'Content-Type': 'text/html' }).end(appHtml);
       } catch (e: any) {
@@ -181,8 +198,22 @@ async function startServer() {
           'utf-8'
         );
         const { render } = await import(ssrPath);
-        const { html } = render(url);
-        const appHtml = template.replace(`<!--app-html-->`, html);
+        const { html, seoData } = render(url);
+        
+        let appHtml = template.replace(`<!--app-html-->`, html);
+        
+        // Inject SEO metadata
+        if (seoData.title) {
+          appHtml = appHtml.replace(/<title>.*?<\/title>/, `<title>${seoData.title}</title>`);
+        }
+        if (seoData.description) {
+          const metaDesc = `<meta name="description" content="${seoData.description}">`;
+          appHtml = appHtml.replace('</head>', `    ${metaDesc}\n</head>`);
+        }
+        if (seoData.canonical) {
+          const canonical = `<link rel="canonical" href="${seoData.canonical}">`;
+          appHtml = appHtml.replace('</head>', `    ${canonical}\n</head>`);
+        }
 
         res.status(200).set({ 'Content-Type': 'text/html' }).end(appHtml);
       } catch (e) {

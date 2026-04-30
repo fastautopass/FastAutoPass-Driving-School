@@ -8,19 +8,14 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const RefresherLessonsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   React.useEffect(() => {
-    document.title = "Refresher Driving Lessons Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Rebuild your driving confidence with professional automatic refresher lessons in Bradford and Leeds. Patient, non-judgmental coaching for license holders returning to the road.');
+    // window.scrollTo(0, 0); // optional
   }, []);
 
   const renderMarkdownLinks = (text: string) => {
@@ -132,6 +127,11 @@ const RefresherLessonsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn refresher-lessons-page">
+      <SEO 
+        title="Refresher Driving Lessons Bradford & Leeds | FastAutoPass"
+        description="Rebuild your driving confidence with professional automatic refresher lessons in Bradford and Leeds. Patient, non-judgmental coaching for license holders returning to the road."
+        canonical="https://fastautopass.co.uk/refresher-lessons"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

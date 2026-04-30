@@ -15,6 +15,8 @@ import MockTestChecklist from './MockTestChecklist';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   const isInternal = href?.startsWith('/');
   // Default classes for area page links
@@ -38,14 +40,7 @@ interface ShipleyPageProps {
 
 const ShipleyPage: React.FC<ShipleyPageProps> = ({ area }) => {
   React.useEffect(() => {
-    document.title = "Automatic Driving Lessons Shipley | BD17 & BD18 | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Expert automatic driving lessons in Shipley, Saltaire, and Windhill. High pass rate, patient local instructors, and modern dual-controlled cars.');
+    // metadata handled by SEO component
   }, []);
 
   const nearbyAreas = area.nearbyIds 
@@ -57,6 +52,11 @@ const ShipleyPage: React.FC<ShipleyPageProps> = ({ area }) => {
 
   return (
     <div className="animate-fadeIn font-inter text-gray-800 bg-white location-page">
+      <SEO 
+        title="Automatic Driving Lessons Shipley | BD17 & BD18 | FastAutoPass"
+        description="Expert automatic driving lessons in Shipley, Saltaire, and Windhill. High pass rate, patient local instructors, and modern dual-controlled cars."
+        canonical={`https://fastautopass.co.uk/${area.city}/${area.id}`}
+      />
       <Schema type="LocalBusiness" data={{
         ...getLocalBusinessSchema(),
         "name": `FastAutoPass ${area.name}`,

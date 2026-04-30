@@ -6,16 +6,11 @@ import { TEST_CENTRES } from '../testCentresData';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const Sitemap: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Sitemap | FastAutoPass Driving School Bradford & Leeds";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Navigate through all our driving lesson services, location pages, and learning resources across West Yorkshire.');
+    // metadata handled by SEO component
   }, []);
 
   const bradfordAreas = ALL_LOCATIONS.filter(a => a.city === 'bradford');
@@ -23,6 +18,11 @@ const Sitemap: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen pt-20 pb-32 legal-page">
+      <SEO 
+        title="Sitemap | FastAutoPass Driving School Bradford & Leeds"
+        description="Navigate through all our driving lesson services, location pages, and learning resources across West Yorkshire."
+        canonical="https://fastautopass.co.uk/sitemap"
+      />
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
         { name: "Sitemap", item: "https://fastautopass.co.uk/sitemap" }

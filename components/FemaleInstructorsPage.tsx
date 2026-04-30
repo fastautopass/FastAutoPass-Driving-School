@@ -8,6 +8,8 @@ import { CONTACT_INFO } from '../constants';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   const isInternal = href?.startsWith('/');
   const classes = "text-red-600 font-bold hover:underline transition-colors";
@@ -50,14 +52,6 @@ const FAQItem: React.FC<{ faq: { question: string; answer: string }; idx: number
 
 const FemaleInstructorsPage: React.FC = () => {
   useEffect(() => {
-    document.title = "Female Driving Instructors Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Find calm and patient female driving instructors for automatic driving lessons in Bradford and Leeds. Supportive tuition for nervous learners and cultural preferences.');
     window.scrollTo(0, 0);
   }, []);
 
@@ -114,6 +108,11 @@ const FemaleInstructorsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn female-instructors-page">
+      <SEO 
+        title="Female Driving Instructors Bradford & Leeds | FastAutoPass"
+        description="Find calm and patient female driving instructors for automatic driving lessons in Bradford and Leeds. Supportive tuition for nervous learners and cultural preferences."
+        canonical="https://fastautopass.co.uk/female-driving-instructors"
+      />
       <Schema 
         type="LocalBusiness" 
         data={getLocalBusinessSchema()} 

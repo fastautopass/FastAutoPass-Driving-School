@@ -8,16 +8,10 @@ import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 import { CONTACT_INFO } from '../constants';
 
+import SEO from './SEO';
+
 const TestPrepPage: React.FC = () => {
   React.useEffect(() => {
-    document.title = "DVSA Driving Test Preparation Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Refine your driving skills for the DVSA practical test. Our specialist preparation in Bradford and Leeds targets common failure points to ensure you are test-ready.');
     window.scrollTo(0, 0);
   }, []);
 
@@ -82,6 +76,11 @@ const TestPrepPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn test-prep-page">
+      <SEO 
+        title="DVSA Driving Test Preparation Bradford & Leeds | FastAutoPass"
+        description="Refine your driving skills for the DVSA practical test. Our specialist preparation in Bradford and Leeds targets common failure points to ensure you are test-ready."
+        canonical="https://fastautopass.co.uk/test-preparation"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

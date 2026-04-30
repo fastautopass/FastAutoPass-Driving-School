@@ -6,16 +6,11 @@ import Accordion from './Accordion';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const TestCentreHub: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Driving Test Centres in Bradford & Leeds | Passing Your Test | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Explore our comprehensive guides for all driving test centres in Bradford and Leeds. Learn about Horsforth, Thornbury, Heaton, and more with expert route advice.');
+    // metadata handled by SEO component
   }, []);
 
   const faqs = [
@@ -35,6 +30,11 @@ const TestCentreHub: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen test-centre-page">
+      <SEO 
+        title="Driving Test Centres in Bradford & Leeds | Passing Your Test | FastAutoPass"
+        description="Explore our comprehensive guides for all driving test centres in Bradford and Leeds. Learn about Horsforth, Thornbury, Heaton, and more with expert route advice."
+        canonical="https://fastautopass.co.uk/driving-test-centres"
+      />
       <Schema 
         type="BreadcrumbList" 
         data={getBreadcrumbSchema([

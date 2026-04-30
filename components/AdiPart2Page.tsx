@@ -7,20 +7,11 @@ import Schema from './Schema';
 import Breadcrumbs from './Breadcrumbs';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const AdiPart2Page: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
-
-  useEffect(() => {
-    document.title = "ADI Part 2 Training Bradford & Leeds | Advanced Driving | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Master the ADI Part 2 test with expert advanced driving coaching in Bradford and Leeds. Professional training for aspiring driving instructors in West Yorkshire.');
-  }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
     {
@@ -111,6 +102,11 @@ const AdiPart2Page: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans adi-part2-page">
+      <SEO 
+        title="ADI Part 2 Training Bradford & Leeds | Advanced Driving | FastAutoPass"
+        description="Master the ADI Part 2 test with expert advanced driving coaching in Bradford and Leeds. Professional training for aspiring driving instructors in West Yorkshire."
+        canonical="https://fastautopass.co.uk/adi-part-2-training"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

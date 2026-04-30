@@ -16,6 +16,8 @@ import { processFAQContent } from '../faqUtils';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 interface AreaPageProps {
   area: AreaData & { city: string };
 }
@@ -40,18 +42,6 @@ const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
 };
 
 const AreaPage: React.FC<AreaPageProps> = ({ area }) => {
-  React.useEffect(() => {
-    const cityName = area.city.charAt(0).toUpperCase() + area.city.slice(1);
-    document.title = `Automatic Driving Lessons in ${area.name} | ${area.postcode} | FastAutoPass`;
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', `Learn to drive in ${area.name} with West Yorkshire's leading automatic specialists. Local instructors, expert test route knowledge, and high pass rates in ${area.postcode}.`);
-  }, [area]);
-
   const nearbyAreas = area.nearbyIds 
     ? ALL_LOCATIONS.filter(a => area.nearbyIds?.includes(a.id))
     : ALL_LOCATIONS.filter(a => a.city === area.city && a.id !== area.id).slice(0, 5);
@@ -61,6 +51,11 @@ const AreaPage: React.FC<AreaPageProps> = ({ area }) => {
 
   return (
     <div className="animate-fadeIn font-inter text-gray-800 bg-white area-page">
+      <SEO 
+        title={`Automatic Driving Lessons in ${area.name} | ${area.postcode} | FastAutoPass`}
+        description={`Learn to drive in ${area.name} with West Yorkshire's leading automatic specialists. Local instructors, expert test route knowledge, and high pass rates in ${area.postcode}.`}
+        canonical={`https://fastautopass.co.uk/${area.city}/${area.id}`}
+      />
       <Schema type="LocalBusiness" data={{
         ...getLocalBusinessSchema(),
         "name": `FastAutoPass ${area.name}`,

@@ -8,19 +8,14 @@ import ReviewsSlider from './ReviewsSlider';
 import Schema from './Schema';
 import { getArticleSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const DrivingLessonsNeededPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   React.useEffect(() => {
-    document.title = "How Many Driving Lessons Do I Need to Pass? | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Find out how many driving lessons you might need to pass your test in Bradford or Leeds. Learn about the factors that influence progress and how we help you get test-ready.');
+    // window.scrollTo removed if needed
   }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
@@ -116,6 +111,11 @@ const DrivingLessonsNeededPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans lessons-needed-page">
+      <SEO 
+        title="How Many Driving Lessons Do I Need to Pass? | FastAutoPass"
+        description="Find out how many driving lessons you might need to pass your test in Bradford or Leeds. Learn about the factors that influence progress and how we help you get test-ready."
+        canonical="https://fastautopass.co.uk/how-many-driving-lessons-do-i-need"
+      />
       <Schema type="Article" data={getArticleSchema(
         "How Many Driving Lessons Do I Need to Pass?",
         "An expert guide on how many driving lessons most learners need to pass their test in Bradford and Leeds. Factors include consistency, age, and transmission type.",

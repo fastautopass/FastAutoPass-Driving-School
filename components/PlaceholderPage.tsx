@@ -5,6 +5,8 @@ import MockTestChecklist from './MockTestChecklist';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 interface PlaceholderPageProps {
   title: string;
   description?: string;
@@ -12,18 +14,15 @@ interface PlaceholderPageProps {
 
 const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, description }) => {
   React.useEffect(() => {
-    document.title = `${title} | FastAutoPass Driving School`;
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', description || `Information about ${title} with FastAutoPass Driving School. We are currently updating this page to provide full details for our learners in Bradford and Leeds.`);
+    // metadata handled by SEO component
   }, [title, description]);
 
   return (
     <div className="bg-white min-h-screen">
+      <SEO 
+        title={`${title} | FastAutoPass Driving School`}
+        description={description || `Information about ${title} with FastAutoPass Driving School. We are currently updating this page to provide full details for our learners in Bradford and Leeds.`}
+      />
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
         { name: title, item: typeof window !== 'undefined' ? window.location.href : `https://fastautopass.co.uk` }

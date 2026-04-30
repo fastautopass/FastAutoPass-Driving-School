@@ -11,6 +11,8 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MockTestsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
 
@@ -65,14 +67,7 @@ const MockTestsPage: React.FC = () => {
   };
 
   React.useEffect(() => {
-    document.title = "Mock Driving Tests Bradford & Leeds | DVSA Style Assessments";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Prepare for your practical exam with realistic mock driving tests in Bradford and Leeds. Master local test routes and build confidence with DVSA standards.');
+    // metadata handled by SEO component
   }, []);
 
   const faqs = [
@@ -136,6 +131,11 @@ const MockTestsPage: React.FC = () => {
 
   return (
     <div className="animate-fadeIn mock-tests-page">
+      <SEO 
+        title="Mock Driving Tests Bradford & Leeds | DVSA Style Assessments"
+        description="Prepare for your practical exam with realistic mock driving tests in Bradford and Leeds. Master local test routes and build confidence with DVSA standards."
+        canonical="https://fastautopass.co.uk/mock-driving-tests"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

@@ -8,19 +8,14 @@ import TrustBadges from './TrustBadges';
 import RecentPasses from './RecentPasses';
 import ReviewsSlider from './ReviewsSlider';
 
+import SEO from './SEO';
+
 const FirstDrivingLessonGuidePage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   React.useEffect(() => {
-    document.title = "What Happens in a Driving Lesson? | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', "Understand exactly what to expect in your driving lessons. From your very first session to test preparation, we explain the journey to becoming a safe driver.");
+    // window.scrollTo(0, 0); // optional
   }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
@@ -100,6 +95,11 @@ const FirstDrivingLessonGuidePage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans first-lesson-page">
+      <SEO 
+        title="What Happens in a Driving Lesson? | FastAutoPass"
+        description="Understand exactly what to expect in your driving lessons. From your very first session to test preparation, we explain the journey to becoming a safe driver."
+        canonical="https://fastautopass.co.uk/what-happens-in-a-driving-lesson"
+      />
       <Schema type="Article" data={getArticleSchema(
         "What Happens in a Driving Lesson? A Complete Guide",
         "Step-by-step guide on what to expect during your first driving lesson in Bradford or Leeds. Covers pickup, safety checks, and basic car controls.",

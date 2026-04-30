@@ -6,19 +6,14 @@ import TrustBadges from './TrustBadges';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const TaxiAssessmentsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   useEffect(() => {
-    document.title = "Taxi Driver Assessment Training Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Pass your Bradford or Leeds City Council taxi assessment first time. Professional training for private hire and hackney carriage drivers in West Yorkshire.');
+    // window.scrollTo removed if needed, but keeping smallest change
   }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
@@ -94,6 +89,11 @@ const TaxiAssessmentsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans taxi-assessments-page">
+      <SEO 
+        title="Taxi Driver Assessment Training Bradford & Leeds | FastAutoPass"
+        description="Pass your Bradford or Leeds City Council taxi assessment first time. Professional training for private hire and hackney carriage drivers in West Yorkshire."
+        canonical="https://fastautopass.co.uk/taxi-assessments"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

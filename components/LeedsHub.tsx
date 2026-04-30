@@ -6,16 +6,11 @@ import Breadcrumbs from './Breadcrumbs';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const LeedsHub: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Automatic Driving Lessons Leeds | Local Service Areas & Postcodes";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Explore all Leeds areas covered by FastAutoPass. Professional automatic driving tuition across LS postcodes including Headingley, Horsforth, and beyond.');
+    // metadata handled by SEO component
   }, []);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,6 +41,11 @@ const LeedsHub: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn min-h-screen location-page">
+      <SEO 
+        title="Automatic Driving Lessons Leeds | Local Service Areas & Postcodes"
+        description="Explore all Leeds areas covered by FastAutoPass. Professional automatic driving tuition across LS postcodes including Headingley, Horsforth, and beyond."
+        canonical="https://fastautopass.co.uk/leeds"
+      />
       <Schema type="LocalBusiness" data={{
         ...getLocalBusinessSchema(),
         "name": "FastAutoPass Leeds",

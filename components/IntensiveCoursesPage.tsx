@@ -8,20 +8,11 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const IntensiveCoursesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
-
-  useEffect(() => {
-    document.title = "Intensive Driving Courses Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Fast-track your driving licence with intensive driving courses in Bradford and Leeds. Real expert tuition designed for efficiency and first-time success.');
-  }, []);
 
   const faqs = [
     {
@@ -134,6 +125,11 @@ const IntensiveCoursesPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans intensive-courses-page">
+      <SEO 
+        title="Intensive Driving Courses Bradford & Leeds | FastAutoPass"
+        description="Fast-track your driving licence with intensive driving courses in Bradford and Leeds. Real expert tuition designed for efficiency and first-time success."
+        canonical="https://fastautopass.co.uk/intensive-driving-courses"
+      />
       <Schema type="Service" data={getServiceSchema(
         "Intensive Driving Courses Bradford & Leeds",
         "Fast-track your driving licence with structured, high-impact intensive driving courses in West Yorkshire.",

@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const CookiePolicyPage: React.FC = () => {
   useEffect(() => {
-    document.title = "Cookies Policy | FastAutoPass Driving School";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', "Understand how FastAutoPass Driving School uses cookies to improve your experience. Our cookie policy details the types of cookies we use and how you can manage them.");
+    // metadata handled by SEO component
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="bg-white min-h-screen font-sans legal-page">
+      <SEO 
+        title="Cookies Policy | FastAutoPass Driving School"
+        description="Understand how FastAutoPass Driving School uses cookies to improve your experience. Our cookie policy details the types of cookies we use and how you can manage them."
+        canonical="https://fastautopass.co.uk/cookie-policy"
+      />
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
         { name: "Cookies Policy", item: "https://fastautopass.co.uk/cookie-policy" }

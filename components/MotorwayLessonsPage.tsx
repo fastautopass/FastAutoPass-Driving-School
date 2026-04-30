@@ -10,6 +10,8 @@ import RecentPasses from './RecentPasses';
 import Schema from './Schema';
 import { getServiceSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
   const isInternal = href?.startsWith('/');
   const classes = "text-red-600 font-bold hover:underline transition-colors";
@@ -23,17 +25,6 @@ const MarkdownLink: React.FC<any> = ({ href, children, ...props }) => {
 const MotorwayLessonsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
-
-  useEffect(() => {
-    document.title = "Motorway Driving Lessons Bradford & Leeds | Confidence Building | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Master high-speed driving with our specialist motorway lessons in Bradford and Leeds. Overcome motorway anxiety and build real confidence on the M62 and M606.');
-  }, []);
 
   const faqs = [
     {
@@ -96,6 +87,11 @@ const MotorwayLessonsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans motorway-lessons-page">
+      <SEO 
+        title="Motorway Driving Lessons Bradford & Leeds | Confidence Building | FastAutoPass"
+        description="Master high-speed driving with our specialist motorway lessons in Bradford and Leeds. Overcome motorway anxiety and build real confidence on the M62 and M606."
+        canonical="https://fastautopass.co.uk/motorway-lessons"
+      />
       <Schema 
         type="Service" 
         data={getServiceSchema(

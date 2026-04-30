@@ -5,18 +5,12 @@ import ReviewsSlider from './ReviewsSlider';
 import Schema from './Schema';
 import { getLocalBusinessSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const AboutUsPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = "About FastAutoPass | Local Driving School Bradford & Leeds";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Learn about FastAutoPass, your local automatic driving school in Bradford and Leeds. Over 10 years of experience helping learners become safe, confident drivers.');
     window.scrollTo(0, 0);
   }, []);
 
@@ -177,6 +171,11 @@ const AboutUsPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans about-us-page">
+      <SEO 
+        title="About FastAutoPass | Local Driving School Bradford & Leeds"
+        description="Learn about FastAutoPass, your local automatic driving school in Bradford and Leeds. Over 10 years of experience helping learners become safe, confident drivers."
+        canonical="https://fastautopass.co.uk/about"
+      />
       <Schema 
         type="LocalBusiness" 
         data={getLocalBusinessSchema()} 

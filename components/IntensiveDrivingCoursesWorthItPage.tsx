@@ -8,19 +8,14 @@ import ReviewsSlider from './ReviewsSlider';
 import Schema from './Schema';
 import { getArticleSchema, getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const IntensiveDrivingCoursesWorthItPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
 
   React.useEffect(() => {
-    document.title = "Intensive Driving Courses: Are They Worth It? | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', "Discover the truth about intensive driving courses in Bradford and Leeds. Learn who they work for, who they don't, and whether a fast-track course is your best path to passing.");
+    // window.scrollTo(0, 0); // optional
   }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
@@ -100,6 +95,11 @@ const IntensiveDrivingCoursesWorthItPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans intensive-worth-it-page">
+      <SEO 
+        title="Intensive Driving Courses: Are They Worth It? | FastAutoPass"
+        description="Discover the truth about intensive driving courses in Bradford and Leeds. Learn who they work for, who they don't, and whether a fast-track course is your best path to passing."
+        canonical="https://fastautopass.co.uk/intensive-driving-courses-are-they-worth-it"
+      />
       <Schema type="Article" data={getArticleSchema(
         "Intensive Driving Courses: Are They Worth It?",
         "An honest look at intensive driving courses in Bradford and Leeds. We compare fast-track courses to weekly lessons to see if they are worth the money.",

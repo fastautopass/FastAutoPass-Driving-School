@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 import Schema from './Schema';
 import { getBreadcrumbSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const TermsAndConditionsPage: React.FC = () => {
   useEffect(() => {
-    document.title = "Terms & Conditions | FastAutoPass Driving School";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', "Read the full terms and conditions of FastAutoPass Driving School. Our policies on booking, payments, cancellations, and student conduct for driving lessons in Bradford and Leeds.");
+    // metadata handled by SEO component
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="bg-white min-h-screen font-sans legal-page">
+      <SEO 
+        title="Terms & Conditions | FastAutoPass Driving School"
+        description="Read the full terms and conditions of FastAutoPass Driving School. Our policies on booking, payments, cancellations, and student conduct for driving lessons in Bradford and Leeds."
+        canonical="https://fastautopass.co.uk/terms-and-conditions"
+      />
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
         { name: "Terms & Conditions", item: "https://fastautopass.co.uk/terms-and-conditions" }

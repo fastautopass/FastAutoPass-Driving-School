@@ -7,20 +7,20 @@ import BookingForm from './BookingForm';
 import Schema from './Schema';
 import { getBreadcrumbSchema, getLocalBusinessSchema } from '../lib/schemaLibrary';
 
+import SEO from './SEO';
+
 const ContactPage: React.FC = () => {
   React.useEffect(() => {
-    document.title = "Contact FastAutoPass | Book Driving Lessons Bradford & Leeds";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Get in touch to book driving lessons in Bradford or Leeds. Our 24/7 team is ready to help you start your journey to passing your driving test.');
+    // metadata handled by SEO component
   }, []);
 
   return (
     <div className="bg-white animate-fadeIn contact-page">
+      <SEO 
+        title="Contact FastAutoPass | Book Driving Lessons Bradford & Leeds"
+        description="Get in touch to book driving lessons in Bradford or Leeds. Our 24/7 team is ready to help you start your journey to passing your driving test."
+        canonical="https://fastautopass.co.uk/contact"
+      />
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
         { name: "Contact", item: "https://fastautopass.co.uk/contact" }

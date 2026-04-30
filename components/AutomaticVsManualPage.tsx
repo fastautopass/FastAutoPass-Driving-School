@@ -14,20 +14,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import SEO from './SEO';
+
 const AutomaticVsManualPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showCallPopup, setShowCallPopup] = useState(false);
-
-  React.useEffect(() => {
-    document.title = "Automatic vs Manual Driving Lessons Bradford & Leeds | FastAutoPass";
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Compare automatic vs manual driving lessons in Bradford and Leeds. Understand the differences in clutch control, gear changes, and lesson pace to choose the right path for your driving future.');
-  }, []);
 
   const faqs: { question: string; answer: React.ReactNode }[] = [
     {
@@ -114,6 +105,11 @@ const AutomaticVsManualPage: React.FC = () => {
 
   return (
     <div className="bg-white animate-fadeIn font-sans auto-vs-manual-page">
+      <SEO 
+        title="Automatic vs Manual Driving Lessons Bradford & Leeds | FastAutoPass"
+        description="Compare automatic vs manual driving lessons in Bradford and Leeds. Understand the differences in clutch control, gear changes, and lesson pace to choose the right path for your driving future."
+        canonical="https://fastautopass.co.uk/automatic-vs-manual"
+      />
       <Schema type="Article" data={getArticleSchema(
         "Automatic vs Manual Driving Lessons: Which is Best for You?",
         "Deciding between automatic and manual driving lessons in Bradford and Leeds. Compare clutch control, gear changes, and learning pace.",
