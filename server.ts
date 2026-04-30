@@ -2,6 +2,7 @@ import express from 'express';
 import { createServer as createViteServer } from 'vite';
 import nodemailer from 'nodemailer';
 import path from 'path';
+import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -134,18 +135,59 @@ async function startServer() {
     }
   });
 
-  // Vite middleware for development
+  // Vite middleware for development or production SSR
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: 'spa',
+      appType: 'custom',
     });
     app.use(vite.middlewares);
+
+    app.use(async (req, res, next) => {
+      const url = req.originalUrl;
+
+      try {
+        let template = await fs.readFile(
+          path.resolve(__dirname, 'index.html'),
+          'utf-8'
+        );
+        template = await vite.transformIndexHtml(url, template);
+        const { render } = await vite.ssrLoadModule('/entry-server.tsx');
+
+        // wait for render to complete (may be async if we used suspense)
+        const { html } = render(url);
+
+        const appHtml = template.replace(`<!--app-html-->`, html);
+
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(appHtml);
+      } catch (e: any) {
+        vite.ssrFixStacktrace(e);
+        next(e);
+      }
+    });
+
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+    // Production SSR
+    const distPath = path.join(process.cwd(), 'dist/client');
+    const ssrPath = path.join(process.cwd(), 'dist/server/entry-server.js');
+    
+    app.use(express.static(distPath, { index: false }));
+
+      app.use(async (req, res, next) => {
+      const url = req.originalUrl;
+      try {
+        const template = await fs.readFile(
+          path.join(distPath, 'index.html'),
+          'utf-8'
+        );
+        const { render } = await import(ssrPath);
+        const { html } = render(url);
+        const appHtml = template.replace(`<!--app-html-->`, html);
+
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(appHtml);
+      } catch (e) {
+        next(e);
+      }
     });
   }
 

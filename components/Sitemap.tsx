@@ -101,13 +101,13 @@ const Sitemap: React.FC = () => {
           {/* DRIVING TEST CENTRES */}
           <div className="lg:col-span-2">
             <h2 className="text-xl font-black uppercase italic mb-6 text-red-600 tracking-widest border-b-4 border-red-600 pb-2 inline-block">Driving Test Centres</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-bold text-gray-600 uppercase tracking-tight italic">
-              <div className="col-span-2 mb-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-y-4 font-bold text-gray-600 uppercase tracking-normal md:tracking-tight italic leading-loose md:leading-relaxed">
+              <div className="col-span-1 md:col-span-2 mb-2">
                 <Link to="/driving-test-centres" className="text-gray-900 font-black text-xs hover:text-red-600 uppercase tracking-widest italic">Driving Test Centres in Bradford & Leeds (Hub)</Link>
               </div>
               {TEST_CENTRES.sort((a, b) => a.name.localeCompare(b.name)).map(centre => (
                 <div key={centre.id} className="list-none">
-                  <Link to={`/driving-test-centres/${centre.id}`} className="hover:text-red-600 transition-colors text-sm">
+                  <Link to={`/driving-test-centres/${centre.id}`} className="hover:text-red-600 transition-colors text-sm block py-1">
                     {centre.title}
                   </Link>
                 </div>
@@ -118,13 +118,13 @@ const Sitemap: React.FC = () => {
           {/* BRADFORD AREAS */}
           <div className="lg:col-span-2">
             <h2 className="text-xl font-black uppercase italic mb-6 text-red-600 tracking-widest border-b-4 border-red-600 pb-2 inline-block">Bradford Areas</h2>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4 font-bold text-[10px] text-gray-500 uppercase tracking-widest italic">
-              <div className="col-span-2 mb-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 font-bold text-[10px] text-gray-500 uppercase tracking-widest italic leading-relaxed">
+              <div className="col-span-1 sm:col-span-2 mb-2">
                 <Link to="/bradford" className="text-gray-900 font-black text-xs hover:text-red-600">Bradford Hub Home</Link>
               </div>
               {bradfordAreas.map(area => (
                 <div key={area.id} className="list-none">
-                  <Link to={`/bradford/${area.id}`} className="hover:text-red-600 transition-colors">
+                  <Link to={`/bradford/${area.id}`} className="hover:text-red-600 transition-colors block">
                     Automatic Lessons in {area.name}
                   </Link>
                 </div>
@@ -135,13 +135,13 @@ const Sitemap: React.FC = () => {
           {/* LEEDS AREAS */}
           <div className="lg:col-span-2">
             <h2 className="text-xl font-black uppercase italic mb-6 text-red-600 tracking-widest border-b-4 border-red-600 pb-2 inline-block">Leeds Areas</h2>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4 font-bold text-[10px] text-gray-500 uppercase tracking-widest italic">
-              <div className="col-span-2 mb-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 font-bold text-[10px] text-gray-500 uppercase tracking-widest italic leading-relaxed">
+              <div className="col-span-1 sm:col-span-2 mb-2">
                 <Link to="/leeds" className="text-gray-900 font-black text-xs hover:text-red-600">Leeds Hub Home</Link>
               </div>
               {leedsAreas.map(area => (
                 <div key={area.id} className="list-none">
-                  <Link to={`/leeds/${area.id}`} className="hover:text-red-600 transition-colors">
+                  <Link to={`/leeds/${area.id}`} className="hover:text-red-600 transition-colors block">
                     Automatic Lessons in {area.name}
                   </Link>
                 </div>

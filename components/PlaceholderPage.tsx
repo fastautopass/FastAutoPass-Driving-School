@@ -26,7 +26,7 @@ const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, description })
     <div className="bg-white min-h-screen">
       <Schema type="BreadcrumbList" data={getBreadcrumbSchema([
         { name: "Home", item: "https://fastautopass.co.uk/" },
-        { name: title, item: window.location.href }
+        { name: title, item: typeof window !== 'undefined' ? window.location.href : `https://fastautopass.co.uk` }
       ])} />
       <section className="py-24 lg:py-40 bg-gray-900 text-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">

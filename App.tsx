@@ -119,6 +119,7 @@ const AppContent: React.FC = () => {
           <Route path="/taxi-assessments" element={<TaxiAssessmentsPage />} />
           <Route path="/adi-part-2-training" element={<AdiPart2Page />} />
           <Route path="/adi-part-3-training" element={<AdiPart3Page />} />
+          <Route path="/instructor-training" element={<Navigate to="/adi-part-2-training" replace />} />
           <Route path="/refresher-lessons" element={<RefresherLessonsPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
@@ -134,13 +135,10 @@ const AppContent: React.FC = () => {
   );
 };
 
-const App: React.FC = () => {
-  return (
-    <Router>
-      <ScrollToTop />
-      <style>{`
-        /* Homepage Spacing (Tight & Refined) */
-        .is-home section {
+export const AppStyle = () => (
+  <style>{`
+    /* Homepage Spacing (Tight & Refined) */
+    .is-home section {
           padding-top: 1.5rem !important;
           padding-bottom: 1.5rem !important;
         }
@@ -945,11 +943,17 @@ const App: React.FC = () => {
           .is-home .mb-16, .is-home .mb-20, .is-home .mb-24 { margin-bottom: 3rem !important; }
         }
       `}</style>
+)
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppStyle />
       <AppContent />
     </Router>
   );
 };
 
-
-
+export { AppContent, ScrollToTop };
 export default App;
