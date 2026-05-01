@@ -1,0 +1,7 @@
+{
+  "name": "FastAutoPass Local SEO Landing Page Generator",
+  "description": "A high-conversion landing page system for FastAutoPass Driving School, featuring 30 localized Bradford areas with sticky CTAs, conversion-focused layout, and SEO-optimized UK content.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
