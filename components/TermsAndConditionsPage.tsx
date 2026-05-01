@@ -242,7 +242,7 @@ const TermsAndConditionsPage: React.FC = () => {
                 To reach us with your inquiries or complaints:
               </p>
               <div className="space-y-2">
-                <p><strong>Email:</strong> <a href="mailto:support@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">support@fastautopass.co.uk</a></p>
+                <p><strong>Email:</strong> <a href="mailto:admin@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">admin@fastautopass.co.uk</a></p>
                 <p><strong>Contact us:</strong> <a href="tel:07842587200" className="text-red-600 font-bold hover:underline">07842 587200</a></p>
               </div>
             </div>

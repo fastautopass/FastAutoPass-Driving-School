@@ -138,7 +138,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 <li>Object to or restrict how we use your data</li>
                 <li>File a complaint with the Information Commissioner’s Office (ICO)</li>
               </ul>
-              <p>To make a request, just email us at <a href="mailto:support@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">support@fastautopass.co.uk</a>.</p>
+              <p>To make a request, just email us at <a href="mailto:admin@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">admin@fastautopass.co.uk</a>.</p>
             </div>
 
             <div>
@@ -170,7 +170,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 If you have any questions about this Privacy Policy or how we handle your data, please get in touch:
               </p>
               <div className="space-y-2">
-                <p><strong>Email:</strong> <a href="mailto:support@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">support@fastautopass.co.uk</a></p>
+                <p><strong>Email:</strong> <a href="mailto:admin@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">admin@fastautopass.co.uk</a></p>
                 <p><strong>Contact us:</strong> <a href="tel:07842587200" className="text-red-600 font-bold hover:underline">07842 587200</a></p>
               </div>
             </div>

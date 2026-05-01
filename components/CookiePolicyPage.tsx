@@ -152,7 +152,7 @@ const CookiePolicyPage: React.FC = () => {
                 If you have any questions about this Cookies Policy or how cookies are used on our website, please get in touch:
               </p>
               <div className="space-y-2">
-                <p><strong>Email:</strong> <a href="mailto:support@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">support@fastautopass.co.uk</a></p>
+                <p><strong>Email:</strong> <a href="mailto:admin@fastautopass.co.uk" className="text-red-600 font-bold hover:underline">admin@fastautopass.co.uk</a></p>
                 <p><strong>Contact us:</strong> <a href="tel:07842587200" className="text-red-600 font-bold hover:underline">07842 587200</a></p>
               </div>
             </div>

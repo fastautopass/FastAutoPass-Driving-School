@@ -137,7 +137,7 @@ const ContactPage: React.FC = () => {
                 <p className="text-gray-500 font-medium mb-4 leading-relaxed">Send us an email about lessons, course options, availability, or general enquiries.</p>
               </div>
               <div className="mt-auto pt-8">
-                <a href="mailto:support@fastautopass.co.uk" className="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase italic tracking-widest hover:bg-blue-700 transition-all shadow-md text-sm">
+                <a href="mailto:admin@fastautopass.co.uk" className="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase italic tracking-widest hover:bg-blue-700 transition-all shadow-md text-sm">
                   Email Us
                 </a>
               </div>

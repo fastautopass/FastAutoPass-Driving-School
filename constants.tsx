@@ -1030,7 +1030,7 @@ export const REVIEWS: Testimonial[] = [];
 export const CONTACT_INFO = {
   phone: '07842 587200',
   whatsapp: '447842587200',
-  email: 'support@fastautopass.co.uk',
+  email: 'admin@fastautopass.co.uk',
   address: 'Serving Bradford, Leeds & surrounding areas'
 };
 

@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
                   <span className="text-2xl font-black italic text-white hover:text-red-600 transition-colors leading-none tracking-tighter">07842 587200</span>
                 </a>
                 <div className="space-y-2">
-                  <a href="mailto:support@fastautopass.co.uk" className="block text-xs font-bold text-gray-400 hover:text-red-600 transition-colors">support@fastautopass.co.uk</a>
+                  <a href="mailto:admin@fastautopass.co.uk" className="block text-xs font-bold text-gray-400 hover:text-red-600 transition-colors">admin@fastautopass.co.uk</a>
                   <p className="text-[10px] font-black uppercase text-gray-600 tracking-widest italic">
                     Or visit our <Link to="/contact" className="text-red-600 hover:underline">Contact Us page</Link> to send us a message.
                   </p>
