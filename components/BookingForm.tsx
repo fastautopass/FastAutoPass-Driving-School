@@ -36,7 +36,13 @@ const BookingForm: React.FC<BookingFormProps> = ({ areaName }) => {
         }),
       });
 
-      const data = await response.json();
+      let data: any = {};
+      const contentType = response.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        throw new Error("Something went wrong. Please try again or call us directly.");
+      }
 
       if (response.ok && data.success) {
         setSubmitted(true);
