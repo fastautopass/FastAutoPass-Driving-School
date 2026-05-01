@@ -187,7 +187,7 @@ const ContactPage: React.FC = () => {
                   <Link to="/leeds" className="block text-gray-500 hover:text-red-600 font-bold transition-colors">All Leeds Areas</Link>
                   <Link to="/leeds/harehills" className="block text-gray-500 hover:text-red-600 font-bold transition-colors">Harehills</Link>
                   <Link to="/leeds/horsforth" className="block text-gray-500 hover:text-red-600 font-bold transition-colors">Horsforth</Link>
-                  <Link to="/leeds/pudsey-leeds" className="block text-gray-500 hover:text-red-600 font-bold transition-colors">Pudsey</Link>
+                  <Link to="/leeds/pudsey" className="block text-gray-500 hover:text-red-600 font-bold transition-colors">Pudsey</Link>
                   <Link to="/leeds/headingley" className="block text-gray-500 hover:text-red-600 font-bold transition-colors">Headingley</Link>
                 </div>
               </div>

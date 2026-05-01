@@ -111,7 +111,7 @@ const FemaleInstructorsPage: React.FC = () => {
       <SEO 
         title="Female Driving Instructors Bradford & Leeds | FastAutoPass"
         description="Find calm and patient female driving instructors for automatic driving lessons in Bradford and Leeds. Supportive tuition for nervous learners and cultural preferences."
-        canonical="https://fastautopass.co.uk/female-driving-instructors"
+        canonical="https://fastautopass.co.uk/our-instructors"
       />
       <Schema 
         type="LocalBusiness" 

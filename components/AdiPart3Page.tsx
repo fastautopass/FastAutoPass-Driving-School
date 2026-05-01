@@ -224,7 +224,7 @@ const AdiPart3Page: React.FC = () => {
                 We use <Link to="/mock-driving-tests" className="font-bold text-red-600 hover:underline">mock tests</Link> to build your confidence. By simulating the real test environment, we ensure you are prepared for the pressure of the day. Our goal is a 'Grade A' pass.
               </p>
               <p className="text-lg text-gray-600 font-medium leading-relaxed">
-                We offer a complete path. If you are still working on your driving skills, check our <Link to="/adi-part-2" className="font-bold text-red-600 hover:underline">Part 2 training</Link>. Once you pass Part 3, we are ready to help you launch your new career.
+                We offer a complete path. If you are still working on your driving skills, check our <Link to="/adi-part-2-training" className="font-bold text-red-600 hover:underline">Part 2 training</Link>. Once you pass Part 3, we are ready to help you launch your new career.
               </p>
             </div>
           </div>

@@ -108,7 +108,7 @@ const AutomaticVsManualPage: React.FC = () => {
       <SEO 
         title="Automatic vs Manual Driving Lessons Bradford & Leeds | FastAutoPass"
         description="Compare automatic vs manual driving lessons in Bradford and Leeds. Understand the differences in clutch control, gear changes, and lesson pace to choose the right path for your driving future."
-        canonical="https://fastautopass.co.uk/automatic-vs-manual"
+        canonical="https://fastautopass.co.uk/automatic-vs-manual-driving-lessons"
       />
       <Schema type="Article" data={getArticleSchema(
         "Automatic vs Manual Driving Lessons: Which is Best for You?",

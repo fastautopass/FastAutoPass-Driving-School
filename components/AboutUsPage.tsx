@@ -174,7 +174,7 @@ const AboutUsPage: React.FC = () => {
       <SEO 
         title="About FastAutoPass | Local Driving School Bradford & Leeds"
         description="Learn about FastAutoPass, your local automatic driving school in Bradford and Leeds. Over 10 years of experience helping learners become safe, confident drivers."
-        canonical="https://fastautopass.co.uk/about"
+        canonical="https://fastautopass.co.uk/about-us"
       />
       <Schema 
         type="LocalBusiness" 

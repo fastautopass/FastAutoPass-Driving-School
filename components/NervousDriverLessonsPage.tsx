@@ -423,7 +423,7 @@ const NervousDriverLessonsPage: React.FC = () => {
                   We provide supportive driving lessons across the whole region, from the quiet suburbs of North Leeds to the residential streets of Bradford. We know the best local spots to start your journey—places where you can practice without the glare of a busy city centre.
                 </p>
                 <p>
-                  If you're looking for <Link to="/refresher-lessons" className="text-red-600 font-bold hover:underline">refresher lessons</Link> to get back on the road or would prefer to learn with a <Link to="/female-driving-instructor" className="text-red-600 font-bold hover:underline">female driving instructor</Link>, our local team is here to help you feel at ease.
+                  If you're looking for <Link to="/refresher-lessons" className="text-red-600 font-bold hover:underline">refresher lessons</Link> to get back on the road or would prefer to learn with a <Link to="/our-instructors" className="text-red-600 font-bold hover:underline">female driving instructor</Link>, our local team is here to help you feel at ease.
                 </p>
                 <p>
                   Our goal is to make sure you feel supported from your very first hour until the moment you pass your test. We focus on building a solid foundation of skills in a relaxed environment, ensuring you have the self-belief to handle any road situation with a level head.
